@@ -1,58 +1,27 @@
-// Firebase Configuration
-const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
-};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <h2>Diet Tracker</h2>
+        <input type="text" id="food" placeholder="Enter food item">
+        <input type="number" id="calories" placeholder="Enter calories">
+        <button onclick="addFood()">Add</button>
+        
+        <h3>Food List</h3>
+        <ul id="food-list"></ul>
+        
+        <h3>Total Calories: <span id="total-calories">0</span></h3>
+    </div>
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
 
-let totalCalories = 0;
-
-function addFood() {
-    let food = document.getElementById("food").value;
-    let calories = parseInt(document.getElementById("calories").value);
-
-    if (food && calories) {
-        let listItem = document.createElement("li");
-        listItem.textContent = `${food} - ${calories} calories`;
-
-        let deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "❌";
-        deleteBtn.style.marginLeft = "10px";
-        deleteBtn.onclick = function () {
-            totalCalories -= calories;
-            document.getElementById("total-calories").textContent = totalCalories;
-            listItem.remove();
-        };
-
-        listItem.appendChild(deleteBtn);
-        document.getElementById("food-list").appendChild(listItem);
-
-        totalCalories += calories;
-        document.getElementById("total-calories").textContent = totalCalories;
-
-        // Save to Firestore with .then() to check for success
-        db.collection("calories").add({
-            food: food,
-            calories: calories,
-            date: new Date().toISOString()
-        }).then(() => {
-            console.log("Data added successfully!");
-        }).catch(error => {
-            console.error("Error adding data: ", error);
-            alert("Failed to save data. Check the console.");
-        });
-
-        // Clear input fields
-        document.getElementById("food").value = "";
-        document.getElementById("calories").value = "";
-    } else {
-        alert("Please enter both food item and calories");
-    }
-}
+</body>
+</html>
