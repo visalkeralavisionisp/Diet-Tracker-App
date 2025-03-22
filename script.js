@@ -1,12 +1,13 @@
 // Firebase Configuration
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
-};
+    apiKey: "AIzaSyAn-iaVkmFTU_5b8PPxyfWj09xLCUGmPI4",
+    authDomain: "diet-tracking-app-c5187.firebaseapp.com",
+    projectId: "diet-tracking-app-c5187",
+    storageBucket: "diet-tracking-app-c5187.firebasestorage.app",
+    messagingSenderId: "381134447195",
+    appId: "1:381134447195:web:d3af3f8f4c2902561a557e",
+    measurementId: "G-H68WVTZ4QE"
+  };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
