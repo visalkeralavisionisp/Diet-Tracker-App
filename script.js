@@ -12,6 +12,12 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
+// Test Firebase Connection
+db.collection("test").add({ message: "Checking Firestore Connection" })
+    .then(() => console.log("✅ Firestore connected successfully!"))
+    .catch(error => console.error("❌ Firestore connection failed:", error));
+
+
 let totalCalories = 0;
 
 function addFood() {
